@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse_lazy
 from django.template import RequestContext, loader
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 
 from entries.models import Entry
 
@@ -24,3 +25,7 @@ def detail(request, entry_id):
 class EntryUpdate(UpdateView):
     model = Entry
     template_name_suffix = '_update_form'
+
+class EntryDelete(DeleteView):
+    model = Entry
+    success_url = reverse_lazy('entries:index')
