@@ -1,0 +1,6 @@
+<p>{{ entry.text }}</p>
+<ul>
+	{% for tag in entry.tags.all %}
+	<li><a href="">{{ tag.name }}</a></li>
+	{% endfor %}
+</ul>

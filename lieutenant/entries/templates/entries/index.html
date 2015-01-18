@@ -1,0 +1,15 @@
+{% if entries_list %}
+	<ul>
+	{% for entry in entries_list %}
+		<li><a href="{% url 'entries:detail' entry.id %}">{{ entry.text }}</a>
+		<ul>
+		{% for tag in entry.tags.all %}
+			<li><a href="">{{ tag.name }}</a></li>
+		{% endfor %}
+		</ul>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No entries are available.</p>
+{% endif %}
