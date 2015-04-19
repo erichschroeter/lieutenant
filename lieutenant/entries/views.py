@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 from django.template import RequestContext, loader
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from entries.models import Entry
@@ -14,17 +15,13 @@ def index(request):
     })
     return HttpResponse(template.render(context))
 
-def detail(request, entry_id):
-    entry = get_object_or_404(Entry, id=entry_id)
-    template = loader.get_template('entries/detail.html')
-    context = RequestContext(request, {
-        'entry': entry,
-    })
-    return HttpResponse(template.render(context))
-
 class EntryCreate(CreateView):
     model = Entry
     template_name_suffix = '_form'
+
+class EntryRead(DetailView):
+    model = Entry
+    template_name_suffix = '_detail'
 
 class EntryUpdate(UpdateView):
     model = Entry
