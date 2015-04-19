@@ -2,18 +2,14 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 from django.template import RequestContext, loader
+from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from entries.models import Entry
 
-def index(request):
-    entries_list = Entry.objects.order_by('-created_at')[:5]
-    template = loader.get_template('entries/index.html')
-    context = RequestContext(request, {
-        'entries_list': entries_list,
-    })
-    return HttpResponse(template.render(context))
+class EntryList(ListView):
+    model = Entry
 
 class EntryCreate(CreateView):
     model = Entry
