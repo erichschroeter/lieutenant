@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Entries{% endblock title %}
+
+{% block content %}
 {% if entries_list %}
 	<ul>
 	{% for entry in entries_list %}
@@ -13,3 +18,4 @@
 {% else %}
 	<p>No entries are available.</p>
 {% endif %}
+{% endblock content %}
