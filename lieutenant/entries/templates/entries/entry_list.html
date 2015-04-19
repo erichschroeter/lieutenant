@@ -3,9 +3,9 @@
 {% block title %}Entries{% endblock title %}
 
 {% block content %}
-{% if entries_list %}
+{% if object_list %}
 	<ul>
-	{% for entry in entries_list %}
+	{% for entry in object_list %}
 		<li><a href="{% url 'entries:detail' entry.id %}">{{ entry.text }}</a>
 		<ul>
 		{% for tag in entry.tags.all %}
