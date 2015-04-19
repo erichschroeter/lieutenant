@@ -1,6 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ entry.created_at }}{% endblock title %}
+
+{% block content %}
 <p>{{ entry.text }}</p>
 <ul>
 	{% for tag in entry.tags.all %}
 	<li><a href="">{{ tag.name }}</a></li>
 	{% endfor %}
 </ul>
+{% endblock content %}
