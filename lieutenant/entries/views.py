@@ -10,6 +10,7 @@ class EntryList(ListView):
 
 class EntryCreate(CreateView):
     model = Entry
+    fields = ['text', 'tags']
     template_name_suffix = '_form'
 
 class EntryRead(DetailView):
