@@ -15,6 +15,9 @@ class LoginRequiredMixin(object):
 class EntryList(LoginRequiredMixin, ListView):
     model = Entry
 
+    def get_queryset(self):
+        return Entry.objects.filter(user=self.request.user)
+
 class EntryCreate(LoginRequiredMixin, CreateView):
     model = Entry
     fields = ['text', 'tags']
