@@ -29,6 +29,23 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+from django.conf import global_settings
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    # Required by `allauth` template tags
+    'django.core.context_processors.request',
+
+    # `allauth` specific context processors
+    'allauth.account.context_processors.account',
+)
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
