@@ -12,22 +12,22 @@ class LoginRequiredMixin(object):
         view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
         return login_required(view)
 
-class EntryList(ListView):
+class EntryList(LoginRequiredMixin, ListView):
     model = Entry
 
-class EntryCreate(CreateView):
+class EntryCreate(LoginRequiredMixin, CreateView):
     model = Entry
     fields = ['text', 'tags']
     template_name_suffix = '_form'
 
-class EntryRead(DetailView):
+class EntryRead(LoginRequiredMixin, DetailView):
     model = Entry
     template_name_suffix = '_detail'
 
-class EntryUpdate(UpdateView):
+class EntryUpdate(LoginRequiredMixin, UpdateView):
     model = Entry
     template_name_suffix = '_update_form'
 
-class EntryDelete(DeleteView):
+class EntryDelete(LoginRequiredMixin, DeleteView):
     model = Entry
     success_url = reverse_lazy('entries:index')
