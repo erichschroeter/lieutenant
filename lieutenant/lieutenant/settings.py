@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'debug_toolbar',
     'rest_framework',
     'taggit',
@@ -62,6 +63,8 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.request.RequestPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
 ]
+
+SITE_ID = 1
 
 ROOT_URLCONF = 'lieutenant.urls'
 
