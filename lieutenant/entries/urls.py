@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^create/$', EntryCreate.as_view(success_url="/entries/"), name='create'),
     url(r'^update/(?P<slug>[^/]+)/$', EntryUpdate.as_view(success_url="/entries/"), name='update'),
     url(r'^delete/(?P<slug>[^/]+)/$', EntryDelete.as_view(), name='delete'),
+    url(r'^(?P<year>(\d\d\d\d))/$', views.EntryListByYear.as_view(), name='list-year'),
     url(r'^(?P<slug>[^/]+)/$', EntryRead.as_view(), name='detail'),
 )
