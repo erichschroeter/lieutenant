@@ -13,5 +13,6 @@ urlpatterns = patterns('',
     url(r'^delete/(?P<slug>[^/]+)/$', EntryDelete.as_view(), name='delete'),
     url(r'^(?P<year>(\d\d\d\d))/$', views.EntryListByYear.as_view(), name='list-year'),
     url(r'^(?P<year>(\d\d\d\d))/(?P<month>(\d\d))/$', views.EntryListByMonth.as_view(), name='list-month'),
+    url(r'^(?P<year>(\d\d\d\d))/(?P<month>(\d\d))/(?P<day>(\d\d))/$', views.EntryListByDay.as_view(), name='list-day'),
     url(r'^(?P<slug>[^/]+)/$', EntryRead.as_view(), name='detail'),
 )

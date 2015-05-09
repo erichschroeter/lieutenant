@@ -31,6 +31,12 @@ class EntryListByMonth(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Entry.objects.filter(user=self.request.user, created_at__year=self.kwargs['year'], created_at__month=self.kwargs['month'])
 
+class EntryListByDay(LoginRequiredMixin, ListView):
+    model = Entry
+
+    def get_queryset(self):
+        return Entry.objects.filter(user=self.request.user, created_at__year=self.kwargs['year'], created_at__month=self.kwargs['month'], created_at__day=self.kwargs['day'])
+
 class EntryCreate(LoginRequiredMixin, CreateView):
     model = Entry
     fields = ['text', 'tags']
