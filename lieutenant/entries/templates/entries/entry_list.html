@@ -6,7 +6,7 @@
 {% if object_list %}
 	<ul>
 	{% for entry in object_list %}
-		<li><a href="{% url 'entries:detail' entry.id %}">{{ entry.text }}</a>
+		<li><a href="{% url 'entries:detail' entry.slug %}">{{ entry.text }}</a>
 		<ul>
 		{% for tag in entry.tags.all %}
 			<li><a href="">{{ tag.name }}</a></li>
