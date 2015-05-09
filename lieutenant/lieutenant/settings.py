@@ -60,6 +60,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'taggit',
     'taggit_serializer',
+    'randomslugfield',
     'entries',
 )
 
