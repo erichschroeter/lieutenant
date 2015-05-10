@@ -3,8 +3,10 @@
 {% block head_title %}{{ entry.created_at }}{% endblock head_title %}
 
 {% block content %}
-<p>{{ entry.text }}</p>
-<ul>
+<p class="created_at">{{ entry.created_at|date:"c" }}</p>
+<p class="updated_at">{{ entry.updated_at|date:"c" }}</p>
+<p class="text">{{ entry.text }}</p>
+<ul class="tags">
 	{% for tag in entry.tags.all %}
 	<li><a href="">{{ tag.name }}</a></li>
 	{% endfor %}
