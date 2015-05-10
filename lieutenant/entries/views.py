@@ -69,7 +69,7 @@ class EntryUpdate(LoginRequiredMixin, UpdateView):
         # Users should only be allowed to see their own entries
         if self.object.user == self.request.user:
             context = self.get_context_data(object=self.object)
-            return self.render_to_response(context)
+            return super(EntryUpdate, self).get(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
 
