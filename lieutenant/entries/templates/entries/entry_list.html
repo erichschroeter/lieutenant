@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<a href="{% url 'entries:create' %}">New</a>
+
 {% if object_list %}
 	<ul>
 	{% for entry in object_list %}
