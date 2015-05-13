@@ -17,9 +17,8 @@ class EntryMixin(object):
     def pre_save(self, obj):
         obj.user = self.request.user
 
-class EntryList(ListCreateAPIView):
-    queryset = Entry.objects.all()
-    serializer_class = EntrySerializer
+class EntryList(EntryMixin, ListCreateAPIView):
+    pass
 
 #class EntryList(APIView):
 
