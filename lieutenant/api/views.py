@@ -7,6 +7,16 @@ from rest_framework.generics import ListCreateAPIView
 from entries.models import Entry
 from entries.serializers import EntrySerializer
 
+from api.permissions import IsOwner
+
+class EntryMixin(object):
+    queryset = Entry.objects.all()
+    serializer_class = EntrySerializer
+    permission_classes = (IsOwner,)
+
+    def pre_save(self, obj):
+        obj.user = self.request.user
+
 class EntryList(ListCreateAPIView):
     queryset = Entry.objects.all()
     serializer_class = EntrySerializer
