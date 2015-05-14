@@ -18,7 +18,25 @@ class EntryMixin(object):
         obj.user = self.request.user
 
 class EntryList(EntryMixin, ListCreateAPIView):
-    pass
+    def get_queryset(self):
+        """
+        This view should return a list of entries determined by the
+        date specified in the URL.
+        """
+        if 'day' in self.kwargs:
+            year = self.kwargs['year']
+            month = self.kwargs['month']
+            day = self.kwargs['day']
+            return Entry.objects.filter(created_at__year=year, created_at__month=month, created_at__day=day)
+        elif 'month' in self.kwargs:
+            year = self.kwargs['year']
+            month = self.kwargs['month']
+            return Entry.objects.filter(created_at__year=year, created_at__month=month)
+        elif 'year' in self.kwargs:
+            year = self.kwargs['year']
+            return Entry.objects.filter(created_at__year=year)
+
+        return Entry.objects.all()
 
 class EntryDetail(EntryMixin, RetrieveUpdateDestroyAPIView):
     lookup_field = 'slug'
