@@ -10,6 +10,6 @@ class EntrySerializer(TaggitSerializer, serializers.ModelSerializer):
     tags = TagListSerializerField()
 
     class Meta:
-	model = Entry
-	fields = ('created_at', 'updated_at', 'text', 'tags')
+        model = Entry
+        fields = ('slug', 'created_at', 'updated_at', 'text', 'tags')
 
