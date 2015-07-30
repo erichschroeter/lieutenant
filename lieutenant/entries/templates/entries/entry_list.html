@@ -3,22 +3,68 @@
 {% block head_title %}Entries{% endblock head_title %}
 
 {% block content %}
+	 
+     
+     
+     
+     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Entries</h1>
+          <div class="new"><a href="{% url 'entries:create' %}">New</a></div>
+  
 
-<a href="{% url 'entries:create' %}">New</a>
 
-{% if object_list %}
-	<ul>
-	{% for entry in object_list %}
-		<li><a href="{% url 'entries:detail' entry.slug %}">{{ entry.text }}</a>
-		<ul>
-		{% for tag in entry.tags.all %}
-			<li><a href="">{{ tag.name }}</a></li>
-		{% endfor %}
-		</ul>
-		</li>
+
+			
+            	
+       
+            
+            <div class="row">
+            <div class="col-md-8">
+            <div class="results">
+                {% if object_list %}
+                    <ul>
+                    {% for entry in object_list %}
+                       		<li>
+                                <span class="glyphicon" aria-hidden="true"></span>
+                                
+                                <div class="resultsline">
+                                <a href="{% url 'entries:detail' entry.slug %}">{{ entry.text }}</a>
+                                <ul>
+                                    {% for tag in entry.tags.all %}
+                                        <li><a href="">{{ tag.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                                </div>
+                        	</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No entries are available.</p>
+                {% endif %}
+          </div>
+          </div>
+          </div>
+          
+          
+
+
+        </div>
+      </div>
+    </div>
+
+    
+
+     {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+	{% for message in messages %}
+	<li>{{message}}</li>
 	{% endfor %}
-	</ul>
-{% else %}
-	<p>No entries are available.</p>
-{% endif %}
+      </ul>
+    </div>
+    {% endif %}
+
+
 {% endblock content %}
+
