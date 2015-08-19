@@ -14,8 +14,7 @@ running.
 _**Note:** These instructions should only have to be done once._
 
 1. `source /usr/local/bin/virtualenvwrapper.sh`
-1. `mkdir ~/.envs`
-1. `mkvirtualenv ~/.envs/lieutenant`
+1. `mkvirtualenv lieutenant`
 
 ### Initial Setup
 
