@@ -27,5 +27,7 @@ These instructions explain how get the development server up an running.
 1. `./manage.py migrate`
 1. `./manage.py runserver 0.0.0.0:8000`
 
-After the server is running, navigate to http://localhost:8000/entries in your
+After the server is running, navigate to [http://localhost:8000/entries][0] in your
 browser.
+
+[0]: http://localhost:8000/entries
