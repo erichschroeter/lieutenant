@@ -1,250 +1,32 @@
 @charset "UTF-8";
 /* CSS Document */
 
-
-
-
-
-
-/*
- * Base structure
- */
-
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 50px;
-  font-family: 'Lato', sans-serif;
+.taglist li {
+	display: inline;
 }
 
-
-
-/*
- * Global add-ons
- */
-
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-/*
- * Top navigation
- * Hide default border to remove 1px line.
- */
-.navbar-fixed-top {
-  border: 0;
-}
-
-/*
- * Sidebar
- */
-
-/* Hide for mobile, show later */
-.sidebar {
-  display: none;
-}
-
-
-.navbar-inverse {
-	background-color: #424242;
-    box-shadow: 0px 3px 3px #888888;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-	background-color: transparent;
-	border: 2px #9ccc65 solid;
-	border-radius: 5px;
-	padding: 5px;
-	color: #9ccc65;
-	margin: 10px 5px;
-	text-transform:uppercase;
-}
-
-.nav-sidebar a{
-	color: #424242;
-}
-
-.nav-sidebar a:hover{
-	background-color: #900;
-}
-
-
-.welcome {
-	color: white;
-	font-size: 1em;
-	padding: 15px 0;
-}
-
-
-
-
-
-.results li{
-	background-color: #F5FFEA;
-	border-top: 2px #fff solid;
-	border-bottom: 1px #9e9e9e solid;
-	padding: 15px;
-	overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.results li a{
-	color: #424242;
-
-}
-
-
-
-.results li li {
-	background-color: transparent;	
-	border: none;
-	margin-left: -30px;
-}
-
-.results li:nth-child(odd) {
-	background-color: #f1f8e9;
-}
-
-.results li li:nth-child(odd){
-	background-color: transparent;
-}
-
-.results li li:nth-child(even){
-	background-color: transparent;
-}
-
-.results ul li ul li {
-}
-.results ul {
-
-}
-
-.new {
-	background-color: #424242;
-	border-radius: 50%;
-	width: 60px;
-	height: 60px;
-	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	text-align: center;
-	color: #424242;
+.collection a  {
+	color:blue;
 	text-decoration: none;
-	text-transform:uppercase;
-	padding-top: 17px;
-	font-size: 1.3em;
+
 }
 
-.new a {
-	color: #9ccc65;
-	}
-	
-.resultsline {
-	display: inline;
-	float: left;
-	width: 80%;
+.limittext {
+	text-overflow: ellipsis;
+	max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
-.glyphicon {
-	background-color: #ffffff;
-	border-radius: 50%;
-	width: 50px;
-	height: 50px;
-	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	display: inline;
-	float: left;
-	margin-right:20px;
+.collection a:hover {
+	color: blue;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (min-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f1f8e9;
-    border-right: 1px solid #eee;
-  }
+.tag {
+	padding: 5px;
+	background-color: #00e676;
+	color: white;
+	border-radius: 2px;
+	font-size: 0.8rem;
+	font-weight: 300;
 }
-
-/* Sidebar navigation */
-.nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-}
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #000;
-  background-color: #eeeeee;
-}
-
-
-/*
- * Main content
- */
-
-.main {
-  padding: 20px;
-}
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
-.main .page-header {
-  margin-top: 0;
-}
-
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
-.placeholder {
-  margin-bottom: 20px;
-}
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-	text-align: center;
-	padding: 10px 20px;
-	margin: 10px 30px;
-}
-
-
-
-
-

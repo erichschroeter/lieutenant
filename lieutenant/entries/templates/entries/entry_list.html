@@ -9,22 +9,20 @@
      
 
                 {% if object_list %}
-                    <ul>
+                    <div class="collection">
                     {% for entry in object_list %}
-                       		<li>
-                                <span class="glyphicon" aria-hidden="true"></span>
-                                
-                                <div class="resultsline">
-                                <a href="{% url 'entries:detail' entry.slug %}">{{ entry.text }}</a>
-                                <ul>
+
+                       		
+				<a href="{% url 'entries:detail' entry.slug %}" class="collection-item"><div class="limittext">{{ entry.text }}</div>
+                                <ul class="taglist">
                                     {% for tag in entry.tags.all %}
-                                        <li><a href="">{{ tag.name }}</a></li>
+                                        <li class="tag">{{ tag.name }}</li>
                                     {% endfor %}
                                 </ul>
-                                </div>
-                        	</li>
+				</a>
+
                     {% endfor %}
-                    </ul>
+                    </div>
                 {% else %}
                     <p>No entries are available.</p>
                 {% endif %}
