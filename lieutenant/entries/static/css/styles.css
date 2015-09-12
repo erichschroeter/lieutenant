@@ -14,10 +14,9 @@
 	display: inline;
 }
 
-.collection a  {
-	color:blue;
+.collection a.collection-item  {
+	color: #212121; /* text-primary-color */
 	text-decoration: none;
-
 }
 
 .limittext {
