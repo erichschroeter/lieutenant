@@ -10,8 +10,24 @@
 .secondary-text-color  { color: #727272; }
 .divider-color         { border-color: #B6B6B6; }
 
+a {
+	color: #8bc34a; /* primary-color */
+}
+
+a:hover {
+	color: #dcedc8; /* light-primary-color */
+}
+
+a:visited {
+	color: #689f38; /* dark-primary-color */
+}
+
 .brand-logo {
 	font-family: 'Jura', sans-serif;
+}
+
+a.brand-logo {
+	color: white;
 }
 
 .taglist li {
