@@ -30,7 +30,7 @@
 <body>
   <nav>
     <div class="nav-wrapper primary-color">
-      <a href="#!" class="brand-logo">Lieutenant</a>
+      <a href="{% url 'entries:index' %}" class="brand-logo">Lieutenant</a>
       <ul class="right hide-on-med-and-down">
 		<li class="welcome">Welcome &nbsp;{% if user.is_authenticated %}</li>
                    	{% load account %}
