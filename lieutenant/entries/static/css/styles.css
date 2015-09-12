@@ -27,12 +27,13 @@
 }
 
 .collection a:hover {
-	color: blue;
+	color: #727272; /* secondary-text-color */
 }
 
 .tag {
 	padding: 5px;
-	background-color: #00e676;
+	background-color: #8bc34a; /* primary-color */
+	color: #dcedc8; /* light-primary-color */
 	color: white;
 	border-radius: 2px;
 	font-size: 0.8rem;
