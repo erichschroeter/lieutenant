@@ -10,6 +10,10 @@
 .secondary-text-color  { color: #727272; }
 .divider-color         { border-color: #B6B6B6; }
 
+.brand-logo {
+	font-family: 'Jura', sans-serif;
+}
+
 .taglist li {
 	display: inline;
 }
