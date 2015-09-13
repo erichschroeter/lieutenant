@@ -34,6 +34,10 @@ a.brand-logo {
 	display: inline;
 }
 
+.taglist a {
+	color: white;
+}
+
 .collection a.collection-item  {
 	color: #212121; /* text-primary-color */
 	text-decoration: none;
@@ -58,6 +62,10 @@ a.brand-logo {
 	border-radius: 2px;
 	font-size: 0.8rem;
 	font-weight: 300;
+}
+
+.tag:hover {
+	background-color: #689f38;
 }
 
 /* label color */
