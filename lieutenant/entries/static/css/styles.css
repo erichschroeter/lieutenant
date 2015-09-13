@@ -39,7 +39,7 @@ a.brand-logo {
 	text-decoration: none;
 }
 
-.limittext {
+.truncate {
 	text-overflow: ellipsis;
 	max-width: 100%;
 	overflow: hidden;

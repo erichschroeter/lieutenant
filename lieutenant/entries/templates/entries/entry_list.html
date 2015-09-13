@@ -13,7 +13,7 @@
                     {% for entry in object_list %}
 
                        		
-				<a href="{% url 'entries:detail' entry.slug %}" class="collection-item"><div class="limittext">{{ entry.text }}</div>
+				<a href="{% url 'entries:detail' entry.slug %}" class="collection-item"><div class="truncate">{{ entry.text }}</div>
                                 <ul class="taglist">
                                     {% for tag in entry.tags.all %}
                                         <li class="tag">{{ tag.name }}</li>
