@@ -6,6 +6,6 @@
 <form action="" method="post">{% csrf_token %}
 	<p>Are you sure you want to delete the following entry?</p>
 	<p>{{ entry.text }}</p>
-	<input type="submit" value="Confirm" />
+	<button class="waves-effect waves-light btn green darken-2 white-text" type="submit">Confirm</button>
 </form>
 {% endblock content %}
