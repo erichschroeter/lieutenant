@@ -34,10 +34,6 @@ a.brand-logo {
 	display: inline;
 }
 
-.taglist a {
-	color: white;
-}
-
 .collection a.collection-item  {
 	color: #212121; /* text-primary-color */
 	text-decoration: none;
@@ -56,9 +52,6 @@ a.brand-logo {
 
 .tag {
 	padding: 5px;
-	background-color: #8bc34a; /* primary-color */
-	color: #dcedc8; /* light-primary-color */
-	color: white;
 	border-radius: 2px;
 	font-size: 0.8rem;
 	font-weight: 300;
