@@ -10,16 +10,16 @@
 .secondary-text-color  { color: #727272; }
 .divider-color         { border-color: #B6B6B6; }
 
-a {
+a:not(.tag) {
 	color: #8bc34a; /* primary-color */
 }
 
-a:hover {
-	color: #dcedc8; /* light-primary-color */
+a:hover:not(.tag) {
+	color: #81c784; /* light-primary-color */
 }
 
-a:visited {
-	color: #689f38; /* dark-primary-color */
+a:visited:not(.tag) {
+	color: #1b5e20; /* dark-primary-color */
 }
 
 .brand-logo {
@@ -50,6 +50,8 @@ a.brand-logo {
 	color: #727272; /* secondary-text-color */
 }
 
+/* #region Tags */
+
 .tag {
 	padding: 5px;
 	border-radius: 2px;
@@ -58,8 +60,10 @@ a.brand-logo {
 }
 
 .tag:hover {
-	background-color: #689f38;
+	background-color: #81c784;
 }
+
+/* #endregion Tags */
 
 /* label color */
 .input-field label {
