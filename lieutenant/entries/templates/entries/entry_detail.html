@@ -23,8 +23,16 @@
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
   <a class="btn-floating btn-large light-green darken-3" href="{% url 'entries:update' entry.slug %}">
-  <i class="large material-icons">mode_edit</i>
+    <i class="large material-icons">mode_edit</i>
   </a>
+  <ul>
+    <li><a class="btn-floating red" href="{% url 'entries:delete' entry.slug %}"><i class="material-icons">delete</i></a></li>
+    <li><a class="btn-floating blue" href="{% url 'entries:clone' entry.slug %}"><i class="material-icons">content_copy</i></a></li>
+  </ul>
 </div>
 
 {% endblock content %}
+
+{% block extra_body_after_js %}
+  <script>$(document).ready(function(){ $(".fixed-action-btn").openFAB(); })</script>
+{% endblock %}
