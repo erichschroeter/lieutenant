@@ -37,6 +37,7 @@
                    	{% load account %}
 			<li class="welcome"><i class="material-icons left">account_circle</i>{% user_display user %}</li>
 			<li><a href="#"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
+			<li><a href="#"><i class="mdi mdi-star left"></i>Favorites</a></li>
 			<li><a href="{% url 'account_email' %}"><i class="material-icons left">group</i>Change E-mail</a></li>
 			<li><a href="{% url 'account_logout' %}"><i class="material-icons left">exit_to_app</i>Sign Out</a></li>
 		{% else %}
@@ -48,6 +49,7 @@
 		{% if user.is_authenticated %}
 			{% load account %}
 			<li><a href="#"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
+			<li><a href="#"><i class="mdi mdi-star left"></i>Favorites</a></li>
 			<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
 			<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
 		{% else %}
