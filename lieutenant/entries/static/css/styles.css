@@ -10,8 +10,46 @@
 .secondary-text-color  { color: #727272; }
 .divider-color         { border-color: #B6B6B6; }
 
+/* #region Links */
+
+nav a:not(.tag) {
+	color: white;
+}
+
+nav a:not(.tag):hover {
+	color: white;
+}
+
+nav a:not(.tag):visited {
+	color: white;
+}
+
+.side-nav a:not(.tag) {
+	color: #388e3c; /* primary-color */
+}
+
+.side-nav a:not(.tag):hover {
+	color: #388e3c; /* primary-color */
+}
+
+.side-nav a:not(.tag):visited {
+	color: #388e3c; /* primary-color */
+}
+
+.dropdown-content a:not(.tag) {
+	color: #388e3c; /* primary-color */
+}
+
+.dropdown-content a:not(.tag):hover {
+	color: #388e3c; /* primary-color */
+}
+
+.dropdown-content a:not(.tag):visited {
+	color: #388e3c; /* primary-color */
+}
+
 a:not(.tag) {
-	color: #8bc34a; /* primary-color */
+	color: #388e3c; /* primary-color */
 }
 
 a:hover:not(.tag) {
@@ -21,6 +59,8 @@ a:hover:not(.tag) {
 a:visited:not(.tag) {
 	color: #1b5e20; /* dark-primary-color */
 }
+
+/* #endregion Links */
 
 .brand-logo {
 	font-family: 'Jura', sans-serif;
