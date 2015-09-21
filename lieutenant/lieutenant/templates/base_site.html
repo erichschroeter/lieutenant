@@ -35,12 +35,17 @@
       <ul class="right hide-on-med-and-down">
 		{% if user.is_authenticated %}
                    	{% load account %}
-			<li class="welcome"><i class="material-icons left">account_circle</i>{% user_display user %}</li>
+			<ul id="profile_dropdown" class="dropdown-content" style="width: 500px;">
+			  <li>Signed in as<br/><b>{% user_display user %}</b></li>
+			  <li class="divider"></li>
+			  <li><a href="#!">Profile</a></li>
+			  <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+			  <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+			</ul>
 			<li><a href="#"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
 			<li><a href="#"><i class="mdi mdi-star left"></i>Favorites</a></li>
 			<li><a href="#"><i class="mdi mdi-trending-up left"></i>Trending</a></li>
-			<li><a href="{% url 'account_email' %}"><i class="material-icons left">group</i>Change E-mail</a></li>
-			<li><a href="{% url 'account_logout' %}"><i class="material-icons left">exit_to_app</i>Sign Out</a></li>
+			<li><a href="#" data-activates="profile_dropdown" class="dropdown-button"><i class="material-icons left">account_circle</i><i class="material-icons left">arrow_drop_down</i></a></li>
 		{% else %}
 			<li><a href="{% url 'account_login' %}"><i class="material-icons left">group</i>Sign In</a></li>
 			<li><a href="{% url 'account_signup' %}">Sign Up</a></li>
@@ -53,8 +58,8 @@
 			<li><a href="#"><i class="mdi mdi-star left"></i>Favorites</a></li>
 			<li><a href="#"><i class="mdi mdi-trending-up left"></i>Trending</a></li>
 			<li class="divider"></li>
-			<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-			<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+			<li><a href="{% url 'account_email' %}"><i class="material-icons left">email</i>Change E-mail</a></li>
+			<li><a href="{% url 'account_logout' %}"><i class="material-icons left">exit_to_app</i>Sign Out</a></li>
 		{% else %}
 			<li><a href="{% url 'account_login' %}">Sign In</a></li>
 			<li><a href="{% url 'account_signup' %}">Sign Up</a></li>
