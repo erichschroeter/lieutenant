@@ -4,6 +4,11 @@ it is to log individual entries, and this is a major goal of Lieutenant.
 Another big part is to analyze the data logged to discover trends and
 hopefully learn from from the data.
 
+![Sign up page](docs/Screenshot_signup.png)
+![Entry list page](docs/Screenshot_entry_list.png)
+![Entry update page](docs/Screenshot_entry_update.png)
+![Entry create page](docs/Screenshot_entry_create.png)
+
 # Instructions
 
 These instructions provide the steps to get a development environment up and
