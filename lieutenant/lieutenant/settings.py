@@ -66,6 +66,7 @@ INSTALLED_APPS = (
     'taggit_serializer',
     'randomslugfield',
     'entries',
+    'tags',
 )
 
 MIDDLEWARE_CLASSES = (
