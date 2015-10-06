@@ -48,6 +48,7 @@ class EntryCreate(LoginRequiredMixin, CreateView):
 
 from django.views.generic.detail import SingleObjectMixin
 from django.shortcuts import redirect
+from taggit.managers import TaggableManager
 
 class EntryClone(LoginRequiredMixin, UpdateView):
     model = Entry
@@ -58,10 +59,15 @@ class EntryClone(LoginRequiredMixin, UpdateView):
         #clone = super(SingleObjectMixin, self).get_object(queryset)
         clone = super(EntryClone, self).get_object(queryset)
 
+        tags = clone.tags.names()
+
         # Clone the object specified by the URL slug
         clone.pk = None
         clone.slug = None
         clone.save()
+
+        for tag in tags:
+            clone.tags.add(tag)
 
         return clone
 
