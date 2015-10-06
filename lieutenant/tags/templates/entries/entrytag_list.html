@@ -1,0 +1,29 @@
+{% extends 'base_site.html' %}
+
+{% block head_title %}Tags{% endblock head_title %}
+
+{% block content %}
+
+{% if object_list %}
+
+<ul class="collection">
+
+  {% for tag in object_list %}
+
+    <li class="collection-item">
+      <span class="title">{{ tag.name }}</span>
+      <p class="truncate">
+      {{ tag.wiki }}
+      </p>
+    </li>
+
+  {% endfor %}
+
+</ul>
+
+{% else %}
+  <p>No tags are available.</p>
+{% endif %}
+
+{% endblock content %}
+
