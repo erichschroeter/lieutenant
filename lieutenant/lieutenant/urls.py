@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('allauth.urls')),
     url(r'^api/', include('api.urls', namespace="api")),
     url(r'^entries/', include('entries.urls', namespace="entries")),
+    url(r'^tags/', include('tags.urls', namespace="tags")),
 )
