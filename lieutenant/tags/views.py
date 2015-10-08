@@ -43,7 +43,7 @@ class TagUpdate(LoginRequiredMixin, UpdateView):
 
 class TagDelete(LoginRequiredMixin, DeleteView):
     model = EntryTag
-    success_url = reverse_lazy('entries:index')
+    success_url = reverse_lazy('tags:index')
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
