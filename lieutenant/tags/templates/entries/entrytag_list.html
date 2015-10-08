@@ -14,9 +14,8 @@
 
     <li class="collection-item">
       <span class="title">{{ tag.name }}</span>
-      <p class="truncate">
-      {{ tag.wiki }}
-      </p>
+      <a href="{% url 'tags:update' tag.slug %}" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+      <p>{{ tag.wiki }}</p>
     </li>
 
   {% endfor %}
