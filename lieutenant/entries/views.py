@@ -59,7 +59,6 @@ class EntryClone(LoginRequiredMixin, UpdateView):
     fields = ['text', 'tags']
 
     def get_object(self, queryset=None):
-        #clone = super(SingleObjectMixin, self).get_object(queryset)
         clone = super(EntryClone, self).get_object(queryset)
 
         tags = clone.tags.names()
@@ -79,7 +78,6 @@ class EntryClone(LoginRequiredMixin, UpdateView):
         # Users should only be allowed to see their own entries
         if self.object.user == self.request.user:
             context = self.get_context_data(object=self.object)
-            #return super(EntryClone, self).get(request, *args, **kwargs)
             return redirect('/entries/update/' + self.object.slug)
         else:
             return HttpResponseForbidden()
