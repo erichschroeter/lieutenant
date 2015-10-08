@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'rest_framework',
     'taggit',
+    'favorites',
     'taggit_serializer',
     'randomslugfield',
     'entries',
