@@ -81,36 +81,6 @@ class EntryClone(LoginRequiredMixin, UpdateView):
         else:
             return HttpResponseForbidden()
 
-#class EntryClone(LoginRequiredMixin, CreateView):
-    #model = Entry
-    #fields = ['text', 'tags']
-    #template_name_suffix = '_form'
-
-    #def get(self, request, *args, **kwargs):
-        #self.object = self.get_object()
-        ## Users should only be allowed to see their own entries
-        #if self.object.user == self.request.user:
-            #context = self.get_context_data(object=self.object)
-            #return self.render_to_response(context)
-        #else:
-            #return HttpResponseForbidden()
-
-    #def form_valid(self, form):
-        #self.object = self.get_object()
-        ## Users should only be allowed to see their own entries
-        #if self.object.user == self.request.user:
-            #context = self.get_context_data(object=self.object)
-
-            ## Clone the object specified by the URL slug
-            #entry = Entry.objects.filter(slug=context['slug'])
-            #entry.slug = None
-            #entry.save()
-
-            #form.instance.user = self.request.user
-            #return super(EntryClone, self).form_valid(form)
-        #else:
-            #return HttpResponseForbidden()
-
 class EntryRead(LoginRequiredMixin, DetailView):
     model = Entry
     template_name_suffix = '_detail'
