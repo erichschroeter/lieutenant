@@ -43,7 +43,7 @@
             <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
             <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
           </ul>
-          <li><a href="#"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
+          <li><a href="{% url 'tags:index' %}"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
           <li><a href="#"><i class="mdi mdi-star left"></i>Favorites</a></li>
           <li><a href="#"><i class="mdi mdi-trending-up left"></i>Trending</a></li>
           <li><a href="#" data-activates="profile_dropdown" class="dropdown-button"><i class="material-icons left">account_circle</i><i class="material-icons left">arrow_drop_down</i></a></li>
@@ -54,7 +54,7 @@
       </ul>
       <ul class="side-nav" id="slide-out">
         {% if user.is_authenticated %}
-          <li><a href="#"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
+          <li><a href="{% url 'tags:index' %}"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
           <li><a href="#"><i class="mdi mdi-star left"></i>Favorites</a></li>
           <li><a href="#"><i class="mdi mdi-trending-up left"></i>Trending</a></li>
           <li class="divider"></li>

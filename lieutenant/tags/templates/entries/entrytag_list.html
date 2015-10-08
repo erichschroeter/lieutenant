@@ -1,0 +1,32 @@
+{% extends 'base_site.html' %}
+
+{% block head_title %}Tags{% endblock head_title %}
+
+{% block content %}
+
+<div class="container">
+
+{% if object_list %}
+
+<ul class="collection">
+
+  {% for tag in object_list %}
+
+    <li class="collection-item">
+      <span class="title">{{ tag.name }}</span>
+      <a href="{% url 'tags:update' tag.slug %}" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+      <p>{{ tag.wiki }}</p>
+    </li>
+
+  {% endfor %}
+
+</ul>
+
+{% else %}
+  <p>No tags are available.</p>
+{% endif %}
+
+</div>
+
+{% endblock content %}
+
