@@ -2,6 +2,7 @@ Django==1.7.1
 argparse==1.2.1
 django-allauth==0.19.1
 django-debug-toolbar==1.2.2
+django-favorites==0.2
 django-randomslugfield==0.3.0
 django-taggit==0.12.2
 django-taggit-serializer==0.1.1

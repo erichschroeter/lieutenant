@@ -3,7 +3,10 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+
+from favorites.models import Favorite
 
 from entries.models import Entry
 
@@ -78,6 +81,25 @@ class EntryClone(LoginRequiredMixin, UpdateView):
             context = self.get_context_data(object=self.object)
             #return super(EntryClone, self).get(request, *args, **kwargs)
             return redirect('/entries/update/' + self.object.slug)
+        else:
+            return HttpResponseForbidden()
+
+class EntryFavorite(LoginRequiredMixin, DetailView):
+    model = Entry
+
+    def get(self, request, *args, **kwargs):
+        self.object = get_object_or_404(Entry, slug=kwargs['slug'])
+
+        # Users should only be allowed to see their own entries
+        if self.object.user == self.request.user:
+            fav = Favorite.objects.favorites_for_obj(self.object)
+            # Toggle the favorite by creating or deleting the table entry
+            if not fav:
+                Favorite.objects.create_favorite(self.object.user, self.object)
+            else:
+                fav.delete()
+            context = self.get_context_data(object=self.object)
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
             return HttpResponseForbidden()
 
