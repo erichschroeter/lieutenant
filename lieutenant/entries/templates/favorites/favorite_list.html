@@ -1,0 +1,36 @@
+{% extends 'base_site.html' %}
+
+{% block head_title %}Favorites{% endblock head_title %}
+
+{% block content %}
+
+<div class="container">
+
+{% if object_list %}
+
+<ul class="collection">
+
+  {% for fav in object_list %}
+
+    <li class="collection-item">
+      <div class="truncate">{{ fav.content_object.text }}</div>
+      <a href="{% url 'entries:favorite' fav.content_object.slug %}" class="secondary-content"><i class="material-icons">grade</i></a>
+
+      <ul class="taglist">
+      {% for tag in fav.content_object.tags.all %}
+        <li class="tag primary-color white-text">{{ tag.name }}</li>
+      {% endfor %}
+      </ul>
+    </li>
+
+  {% endfor %}
+
+</ul>
+
+{% else %}
+  <p>No favorites are available.</p>
+{% endif %}
+
+</div>
+
+{% endblock content %}
