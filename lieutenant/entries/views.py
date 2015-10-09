@@ -82,6 +82,12 @@ class EntryClone(LoginRequiredMixin, UpdateView):
         else:
             return HttpResponseForbidden()
 
+class EntryFavoriteList(LoginRequiredMixin, ListView):
+    model = Entry
+
+    def get_queryset(self):
+        return Favorite.objects.favorites_of_user(self.request.user)
+
 class EntryFavorite(LoginRequiredMixin, DetailView):
     model = Entry
 
