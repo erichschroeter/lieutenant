@@ -13,6 +13,10 @@ class EntryTag(TagBase):
         verbose_name = _("Tag")
         verbose_name_plural = _("Tags")
 
+    @property
+    def get_count(self):
+        return len(TaggedEntry.objects.filter(tag__name=self.name))
+
 class TaggedEntry(GenericTaggedItemBase):
     tag = models.ForeignKey(EntryTag, related_name="%(app_label)s_%(class)s_items")
 
