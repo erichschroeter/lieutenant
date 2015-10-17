@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-from entries.models import Entry, EntryTag
+from entries.models import Entry, EntryTag, TaggedEntry
 from entries.serializers import EntrySerializer, EntryTagSerializer
 
 from api.permissions import IsOwner
@@ -47,5 +47,12 @@ class TagsList(ListCreateAPIView):
     def get_queryset(self):
         if 'filter' in self.kwargs:
             tagfilter = self.kwargs['filter']
-            return EntryTag.objects.filter(name__startswith=tagfilter)
-        return EntryTag.objects.all()
+            tags = EntryTag.objects.filter(name__startswith=tagfilter)
+        else:
+            tags = EntryTag.objects.all()
+
+        for tag in tags:
+            count = len(TaggedEntry.objects.filter(tag__name=tag.name))
+            tag.count = count
+
+        return tags
