@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-from entries.models import Entry
-from entries.serializers import EntrySerializer
+from entries.models import Entry, EntryTag
+from entries.serializers import EntrySerializer, EntryTagSerializer
 
 from api.permissions import IsOwner
 
@@ -41,3 +41,11 @@ class EntryList(EntryMixin, ListCreateAPIView):
 class EntryDetail(EntryMixin, RetrieveUpdateDestroyAPIView):
     lookup_field = 'slug'
 
+class TagsList(ListCreateAPIView):
+    serializer_class = EntryTagSerializer
+
+    def get_queryset(self):
+        if 'filter' in self.kwargs:
+            tagfilter = self.kwargs['filter']
+            return EntryTag.objects.filter(name__startswith=tagfilter)
+        return EntryTag.objects.all()
