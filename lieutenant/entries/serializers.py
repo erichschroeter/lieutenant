@@ -14,7 +14,8 @@ class EntrySerializer(TaggitSerializer, serializers.ModelSerializer):
         fields = ('slug', 'created_at', 'updated_at', 'text', 'tags')
 
 class EntryTagSerializer(serializers.ModelSerializer):
+    count = serializers.IntegerField(source='get_count')
 
     class Meta:
-	model = EntryTag
-	fields = ('name', 'wiki')
+        model = EntryTag
+        fields = ('name', 'wiki', 'count')
