@@ -13,7 +13,7 @@
   {% for tag in object_list %}
 
     <li class="collection-item">
-      <span class="title">{{ tag.name }}</span>
+      <span class="title tag green">{{ tag.name }}</span> <b>x {{ tag.count }}</b>
       <a href="{% url 'tags:update' tag.slug %}" class="secondary-content"><i class="material-icons">mode_edit</i></a>
       <p>{{ tag.wiki }}</p>
     </li>
