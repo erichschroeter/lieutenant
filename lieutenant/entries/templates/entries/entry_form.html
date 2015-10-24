@@ -31,3 +31,75 @@
 </div>
 
 {% endblock content %}
+
+{% block extra_body_after_js %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/tag-it.js' %}" type="text/javascript" charset="utf-8"></script>
+
+<script>
+$(document).ready(function() {
+	// using jQuery
+	function getCookie(name) {
+	    var cookieValue = null;
+	    if (document.cookie && document.cookie != '') {
+		var cookies = document.cookie.split(';');
+		for (var i = 0; i < cookies.length; i++) {
+		    var cookie = jQuery.trim(cookies[i]);
+		    // Does this cookie string begin with the name we want?
+		    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+			cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+			break;
+		    }
+		}
+	    }
+	    return cookieValue;
+	}
+	var csrftoken = getCookie('csrftoken');
+	$("#id_tags").keyup(function(e) {
+		clearTimeout($.data(this, 'timer'));
+		if (e.keyCode == 13) {
+			search(true);
+		} else {
+			$(this).data('timer', setTimeout(search, 500));
+		}
+	});
+	function csrfSafeMethod(method) {
+		return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+	}
+	$.ajaxSetup({
+		beforeSend: function(xhr, settings) {
+			if (!csrfSafeMethod(settings.tyupe) && !this.crossDomain) {
+				xhr.setRequestHeader("X-CSRFToken", csrftoken);
+			}
+		}
+	});
+
+	function search(force) {
+		var existingString = $("#id_tags").val();
+		if (!force && existingString.length < 0) return; // wasn't enter, not > 0 char
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8000/api/tags/" + existingString + '/',
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				var tags = []
+				for (i = 0; i < data.length; i++) {
+					tags.push(data[i].name);
+					console.log(data[i]);
+				}
+				console.log(tags);
+				$('#id_tags').tagit({
+					availableTags: tags
+				});
+			},
+			error: function(e) {
+				console.log(e);
+			}
+		});
+	}
+});
+</script>
+
+{% endblock extra_body_after_js %}
