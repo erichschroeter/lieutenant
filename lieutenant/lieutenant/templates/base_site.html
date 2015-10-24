@@ -8,12 +8,20 @@
 <html>
 <head>
   {% load staticfiles %}
+
+  {% block head_before_css %}
+  {% endblock %}
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}" />
   <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css' %}" media="all" type="text/css" />
   <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   <link href='http://fonts.googleapis.com/css?family=Lato:400,300,100,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
+
+  {% block head_after_css %}
+  {% endblock %}
+
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -22,6 +30,7 @@
   <![endif]-->
 
   <title>{% block head_title %}Lieutenant{% endblock %}</title>
+
   {% block extra_head %}
   {% endblock %}
 
