@@ -122,8 +122,12 @@ class EntryRead(LoginRequiredMixin, DetailView):
 
 class EntryUpdate(LoginRequiredMixin, UpdateView):
     model = Entry
-    template_name_suffix = '_update_form'
     fields = ['text', 'tags']
+
+    def get_context_data(self, **kwargs):
+       context = super(EntryUpdate, self).get_context_data(**kwargs)
+       context.update({'is_update': True})
+       return context
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
