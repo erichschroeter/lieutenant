@@ -122,7 +122,6 @@ class EntryRead(LoginRequiredMixin, DetailView):
 
 class EntryUpdate(LoginRequiredMixin, UpdateView):
     model = Entry
-    template_name_suffix = '_update_form'
     fields = ['text', 'tags']
 
     def get_context_data(self, **kwargs):
