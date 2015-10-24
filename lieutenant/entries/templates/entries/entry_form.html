@@ -12,13 +12,15 @@
 {% block content %}
 <div class="container">
 
+  {% load widget_tweaks %}
+
   <form action="" method="post">{% csrf_token %}
     {{ form.non_field_errors }}
     <div class="fieldWrapper row">
       <div class="input-field">
         {{ form.text.errors }}
         <label for="{{ form.text.id_for_label }}">Text</label>
-        <textarea cols="40" id="id_text" name="{{ form.text.name }}" rows="10" class="materialize-textarea" autofocus></textarea>
+        {{ form.text|attr:"autofocus"|add_class:"materialize-textarea" }}
       </div>
     </div>
 
@@ -26,7 +28,7 @@
       <div class="input-field">
         {{ form.tags.errors }}
         <label for="{{ form.tags.id_for_label }}">Tags</label>
-        <input id="{{ form.tags.id_for_label }}" name="tags" type="text" placeholder="A comma-separated list of tags." />
+        {{ form.tags|attr:"placeholder:A comma-separated list of tags." }}
       </div>
     </div>
     <button class="waves-effect waves-light btn green darken-2 white-text" type="submit">{% if is_update %}Update{% else %}Create{% endif %}</button>
