@@ -2,9 +2,14 @@
 
 {% block head_title %}Create Entry{% endblock head_title %}
 
+{% block head_before_css %}
 
+  {% load staticfiles %}
+  <link href="{% static 'css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
 
- {% block content %}
+{% endblock head_before_css %}
+
+{% block content %}
 <div class="container">
 
   <form action="" method="post">{% csrf_token %}
