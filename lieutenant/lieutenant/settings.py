@@ -60,7 +60,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'debug_toolbar',
     'rest_framework',
     'taggit',
     'favorites',
