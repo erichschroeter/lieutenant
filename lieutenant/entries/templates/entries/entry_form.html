@@ -81,31 +81,6 @@ $(document).ready(function() {
 			}
 		}
 	});
-
-	function search(force) {
-		var existingString = $("#id_tags").val();
-		if (!force && existingString.length < 0) return; // wasn't enter, not > 0 char
-		$.ajax({
-			type: "GET",
-			url: "http://localhost:8000/api/tags/" + existingString + '/',
-			dataType: 'json',
-			success: function(data) {
-				console.log(data);
-				var tags = []
-				for (i = 0; i < data.length; i++) {
-					tags.push(data[i].name);
-					console.log(data[i]);
-				}
-				console.log(tags);
-				$('#id_tags').tagit({
-					availableTags: tags
-				});
-			},
-			error: function(e) {
-				console.log(e);
-			}
-		});
-	}
 });
 </script>
 
