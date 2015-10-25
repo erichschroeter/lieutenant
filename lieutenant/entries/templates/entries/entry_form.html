@@ -81,6 +81,43 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+    var customRenderItem = function(ul, item) {
+        var self = this;
+
+        return $("<li>")
+            .append(
+                $("<a>").text(item.name)
+                .append($("<span>").text(" x " + item.count).css("font-weight", "bold"))
+                .append($("<p>").text(item.wiki))
+                )
+            .appendTo(ul);
+    };
+
+    $('#id_tags').tagit({
+        autocomplete: {
+            minLength: 1,
+            source: function(request, response) {
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8000/api/tags/" + request.term + '/',
+                    dataType: 'json',
+                    success: function(data) {
+                        /* Set the value and label property in order for autocomplete to work properly. */
+                        for (i = 0; i < data.length; i++) {
+                            data[i].value = data[i].name;
+                            data[i].label = data[i].name;
+                        }
+                        response(data);
+                    }
+                });
+            },
+
+            create: function() {
+                $(this).data('uiAutocomplete')._renderItem = customRenderItem;
+            }
+        }
+    });
 });
 </script>
 
