@@ -36,6 +36,7 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
 
     # `allauth` specific context processors
     'allauth.account.context_processors.account',
+    'dealer.contrib.django.context_processor',
 )
 
 TEMPLATE_DIRS = (
@@ -79,6 +80,7 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'dealer.contrib.django.Middleware',
 )
 
 DEBUG_TOOLBAR_PANELS = [
