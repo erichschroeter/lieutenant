@@ -46,6 +46,8 @@
       <ul class="right hide-on-med-and-down">
         {% if user.is_authenticated %}
           <ul id="profile_dropdown" class="dropdown-content" style="width: 500px;">
+            <li>Version: {{ REVISION }}</li>
+            <li class="divider"></li>
             <li>Signed in as<br/><b>{% user_display user %}</b></li>
             <li class="divider"></li>
             <li><a href="#!">Profile</a></li>
@@ -62,6 +64,7 @@
         {% endif %}
       </ul>
       <ul class="side-nav" id="slide-out">
+        <li><a href="#">Version: {{ REVISION }}</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'tags:index' %}"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
           <li><a href="{% url 'entries:favorites' %}"><i class="mdi mdi-star left"></i>Favorites</a></li>
