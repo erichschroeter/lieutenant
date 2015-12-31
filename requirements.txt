@@ -10,6 +10,7 @@ django-taggit-serializer==0.1.1
 django-widget-tweaks==1.4.1
 djangorestframework==3.1.1
 oauthlib==0.7.2
+psycopg2==2.6.1
 python-openid==2.2.5
 pytz==2015.2
 requests==2.6.2
