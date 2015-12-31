@@ -16,5 +16,6 @@ python-openid==2.2.5
 pytz==2015.2
 requests==2.6.2
 requests-oauthlib==0.4.2
+setproctitle==1.1.9
 sqlparse==0.1.14
 wsgiref==0.1.2
