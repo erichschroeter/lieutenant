@@ -8,7 +8,9 @@ GROUP=webapps                                     # the group to run as
 NUM_WORKERS=3                                     # how many worker processes should Gunicorn spawn
 DJANGO_SETTINGS_MODULE=lieutenant.settings        # which settings file should Django use
 DJANGO_WSGI_MODULE=lieutenant.wsgi                # WSGI module name
-BINDIR=/home/lieutenant/bin                       # the bin directory
+VIRTUALENVSDIR=/home/lieutenant/.virtualenvs      # Path to where virtual envs are stored
+VIRTUALENVDIR=$VIRTUALENVSDIR/lieutenant          # Path to where the lieutenant virtual env is stored
+BINDIR=$VIRTUALENVDIR/bin                         # the bin directory
 
 echo "Starting $NAME as `whoami`"
 
