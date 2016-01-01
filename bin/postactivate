@@ -1,0 +1,10 @@
+#!/bin/bash
+# This hook is sourced after this virtualenv is activated.
+
+# To override the environment variables below, uncomment and modify the value.
+# Assuming you stick with the defaults you should only need to update LIEUTENANT_DB_PASSWORD.
+#export LIEUTENANT_DB_NAME="lieutenant"
+#export LIEUTENANT_DB_USER="django_lieutenant"
+#export LIEUTENANT_DB_PASSWORD=""
+#export LIEUTENANT_DB_HOST="localhost"
+#export LIEUTENANT_DB_PORT=""
