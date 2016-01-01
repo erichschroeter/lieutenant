@@ -15,8 +15,17 @@ BINDIR=$VIRTUALENVDIR/bin                         # the bin directory
 echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
-cd $DJANGODIR
-source ${BINDIR}/activate
+
+# Set the WORKON_HOME explicitly in here before we source virtualenvwrapper
+# in order to allow anyone to start the lieutenant service (e.g. using sudo)
+# where they may have their own WORKON_HOME specified. In other words,
+# override any previously existing value.
+WORKON_HOME=$VIRTUALENVSDIR
+
+# Source virtualenvwrapper script so we have necessary commands
+source $(which virtualenvwrapper.sh)
+workon lieutenant
+
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
