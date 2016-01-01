@@ -105,11 +105,11 @@ WSGI_APPLICATION = 'lieutenant.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lieutenant',
-        'USER': 'django_lieutenant',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '', # Set to empty string for default
+        'NAME':     os.environ.get("LIEUTENANT_DB_NAME", 'lieutenant'),
+        'USER':     os.environ.get("LIEUTENANT_DB_USER", 'django_lieutenant'),
+        'PASSWORD': os.environ.get("LIEUTENANT_DB_PASSWORD", ''),
+        'HOST':     os.environ.get("LIEUTENANT_DB_HOST", 'localhost'),
+        'PORT':     os.environ.get("LIEUTENANT_DB_PORT", ''), # Set to empty string for default
     }
 }
 
