@@ -36,13 +36,13 @@ Create a user for the app, named _lieutenant_ and assigned to a system group
 called _webapps_.
 
     $ sudo groupadd --system webapps
-    $ sudo useradd --system --gid webapps --shell /binbash --home /home/lieutenant lieutenant
+    $ sudo useradd --system --gid webapps --shell /bin/bash --home /home/lieutenant lieutenant
 
 ## Install pip
 
 To install [pip][3] run this command:
 
-    $ sudo apt-get install pip
+    $ sudo apt-get install python-pip
 
 ## Install virtualenv and virtualenvwrapper
 
@@ -140,7 +140,7 @@ Create symlinks to the provided config and script files in the repo:
     $ sudo ln -s /home/lieutenant/lieutenant/bin/postactivate /home/lieutenant/.virtualenvs/lieutenant/bin/
     $ sudo ln -s /home/lieutenant/lieutenant/bin/predeactivate /home/lieutenant/.virtualenvs/lieutenant/bin/
     $ sudo ln -s /home/lieutenant/lieutenant/etc/nginx/lieutenant.conf /etc/nginx/sites-available/lieutenant
-    $ sudo ln -s /etc/nginx/lieutenant /etc/nginx/sites-enabled/
+    $ sudo ln -s /etc/nginx/sites-available/lieutenant /etc/nginx/sites-enabled/
     $ sudo ln -s /home/lieutenant/lieutenant/etc/supervisor/lieutenant.conf /etc/supervisor/conf.d/
 
 Start the supervisor service:
