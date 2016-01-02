@@ -4,6 +4,11 @@ These instructions were created on an Ubuntu system.
 
 > These instructions were based off of [this tutorial][0].
 
+A walkthrough video of these instructions hase been created for your
+convenience located at [https://www.youtube.com/watch?v=psTw2HgnNsc][10].
+
+[![Youtube tutorial](https://img.youtube.com/vi/psTw2HgnNsc/0.jpg)](https://www.youtube.com/watch?v=psTw2HgnNsc)
+
 ## PostgreSQL
 
 To install PostgreSQL run this command:
@@ -165,3 +170,4 @@ Navigate to [http://localhost/][9] in your browser.
 [7]: https://www.nginx.com/
 [8]: https://httpd.apache.org/
 [9]: http://localhost/
+[10]: https://www.youtube.com/watch?v=psTw2HgnNsc
