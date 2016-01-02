@@ -1,0 +1,44 @@
+#!/bin/bash
+
+NAME="lieutenant"                                 # Name of the application
+DJANGODIR=/home/lieutenant/lieutenant/lieutenant  # Django project directory
+SOCKFILE=/home/lieutenant/run/gunicorn.sock       # we will communicte using this unix socket
+USER=lieutenant                                   # the user to run as
+GROUP=webapps                                     # the group to run as
+NUM_WORKERS=3                                     # how many worker processes should Gunicorn spawn
+DJANGO_SETTINGS_MODULE=lieutenant.settings        # which settings file should Django use
+DJANGO_WSGI_MODULE=lieutenant.wsgi                # WSGI module name
+VIRTUALENVSDIR=/home/lieutenant/.virtualenvs      # Path to where virtual envs are stored
+VIRTUALENVDIR=$VIRTUALENVSDIR/lieutenant          # Path to where the lieutenant virtual env is stored
+BINDIR=$VIRTUALENVDIR/bin                         # the bin directory
+
+echo "Starting $NAME as `whoami`"
+
+# Activate the virtual environment
+
+# Set the WORKON_HOME explicitly in here before we source virtualenvwrapper
+# in order to allow anyone to start the lieutenant service (e.g. using sudo)
+# where they may have their own WORKON_HOME specified. In other words,
+# override any previously existing value.
+WORKON_HOME=$VIRTUALENVSDIR
+
+# Source virtualenvwrapper script so we have necessary commands
+source $(which virtualenvwrapper.sh)
+workon lieutenant
+
+export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
+export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+
+# Create the run directory if it doesn't exist
+RUNDIR=$(dirname $SOCKFILE)
+test -d $RUNDIR || mkdir -p $RUNDIR
+
+# Start your Django Unicorn
+# Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
+exec ${BINDIR}/gunicorn ${DJANGO_WSGI_MODULE}:application \
+  --name $NAME \
+  --workers $NUM_WORKERS \
+  --user=$USER --group=$GROUP \
+  --bind=unix:$SOCKFILE \
+  --log-level=debug \
+  --log-file=-

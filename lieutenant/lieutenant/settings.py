@@ -104,8 +104,12 @@ WSGI_APPLICATION = 'lieutenant.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME':     os.environ.get("LIEUTENANT_DB_NAME", 'lieutenant'),
+        'USER':     os.environ.get("LIEUTENANT_DB_USER", 'django_lieutenant'),
+        'PASSWORD': os.environ.get("LIEUTENANT_DB_PASSWORD", ''),
+        'HOST':     os.environ.get("LIEUTENANT_DB_HOST", 'localhost'),
+        'PORT':     os.environ.get("LIEUTENANT_DB_PORT", ''), # Set to empty string for default
     }
 }
 
@@ -127,3 +131,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Location where the collectstatic command will place static files
+STATIC_ROOT = '/home/lieutenant/static'

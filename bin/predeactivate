@@ -1,0 +1,8 @@
+#!/bin/bash
+# This hook is sourced before this virtualenv is deactivated.
+
+unset LIEUTENANT_DB_NAME
+unset LIEUTENANT_DB_USER
+unset LIEUTENANT_DB_PASSWORD
+unset LIEUTENANT_DB_HOST
+unset LIEUTENANT_DB_PORT
