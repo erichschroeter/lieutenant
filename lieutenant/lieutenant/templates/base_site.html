@@ -36,53 +36,20 @@
 
 <body>
 
-  <nav>
-    <div class="nav-wrapper primary-color">
-      <a href="{% url 'entries:index' %}" class="brand-logo white-text">Lieutenant</a>
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        {% if user.is_authenticated %}
-          <ul id="profile_dropdown" class="dropdown-content" style="width: 500px;">
-            <li>Version: {{ REVISION }}</li>
-            <li class="divider"></li>
-            <li>Signed in as<br/><b>{% user_display user %}</b></li>
-            <li class="divider"></li>
-            <li><a href="#!">Profile</a></li>
-            <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-            <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-          </ul>
-          <li><a href="{% url 'tags:index' %}"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
-          <li><a href="{% url 'entries:favorites' %}"><i class="mdi mdi-star left"></i>Favorites</a></li>
-          <li><a href="#"><i class="mdi mdi-trending-up left"></i>Trending</a></li>
-          <li><a href="#" data-activates="profile_dropdown" class="dropdown-button"><i class="material-icons left">account_circle</i><i class="material-icons left">arrow_drop_down</i></a></li>
-        {% else %}
-          <li><a href="{% url 'account_login' %}"><i class="material-icons left">group</i>Sign In</a></li>
-          <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
-      <ul class="side-nav" id="slide-out">
-        <li><a href="#">Version: {{ REVISION }}</a></li>
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'tags:index' %}"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
-          <li><a href="{% url 'entries:favorites' %}"><i class="mdi mdi-star left"></i>Favorites</a></li>
-          <li><a href="#"><i class="mdi mdi-trending-up left"></i>Trending</a></li>
-          <li class="divider"></li>
-          <li><a href="{% url 'account_email' %}"><i class="material-icons left">email</i>Change E-mail</a></li>
-          <li><a href="{% url 'account_logout' %}"><i class="material-icons left">exit_to_app</i>Sign Out</a></li>
-        {% else %}
-          <li><a href="{% url 'account_login' %}">Sign In</a></li>
-          <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        {% block nav_content %}
+            {% include 'navigation.html' %}
+        {% endblock %}
 
-  {% block body %}
-  {% block content %}
-  {% endblock %}
-  {% endblock %}
-  {% block extra_body %}
-  {% endblock %}
+        <div class="android-content mdl-layout__content">
+            {% block body %}
+            {% block content %}
+            {% endblock %}
+            {% endblock %}
+            {% block extra_body %}
+            {% endblock %}
+        </div>
+    </div>
 
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
