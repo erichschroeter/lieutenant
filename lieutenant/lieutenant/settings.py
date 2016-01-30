@@ -111,6 +111,10 @@ DATABASES = {
         'HOST':     os.environ.get("LIEUTENANT_DB_HOST", 'localhost'),
         'PORT':     os.environ.get("LIEUTENANT_DB_PORT", ''), # Set to empty string for default
     }
+    #'default': {
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME':     os.environ.get(BASE_DIR, 'db.sqlite3'),
+    #}
 }
 
 # Internationalization
