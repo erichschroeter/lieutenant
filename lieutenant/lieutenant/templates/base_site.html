@@ -9,8 +9,7 @@
 <head>
   {% load staticfiles %}
 
-  {% block head_before_css %}
-  {% endblock %}
+  {% block css %}
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css' %}" media="all" type="text/css" />
@@ -18,7 +17,6 @@
   <link href='http://fonts.googleapis.com/css?family=Lato:400,300,100,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
 
-  {% block head_after_css %}
   {% endblock %}
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
