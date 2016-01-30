@@ -1,0 +1,75 @@
+<div class="android-header mdl-layout__header mdl-layout__header--waterfall">
+
+    <div class="mdl-layout__header-row">
+
+        <span class="android-title mdl-layout-title">
+            <a href="{% url 'home' %}" class="brand-logo undecorate">Lieutenant</a>
+            <span class="version">({{ REVISION }})</span>
+        </span>
+        <!-- Add spacer, to align navigation to the right in desktop -->
+        <div class="android-header-spacer mdl-layout-spacer"></div>
+
+        {% if user.is_authenticated %}
+            <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+                    <i class="menu-icon material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <form>
+                        <input class="mdl-textfield__input" type="text" id="search-field">
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+        <!-- Navigation -->
+        <div class="android-navigation-container">
+            <nav class="android-navigation mdl-navigation">
+                {% if user.is_authenticated %}
+                    <a class="mdl-navigation__link" href="{% url 'tags:index' %}"><i class="menu-icon mdi mdi-tag-multiple left"></i>Tags</a>
+                    <a class="mdl-navigation__link" href="{% url 'entries:favorites' %}"><i class="menu-icon mdi mdi-star left"></i>Favorites</a>
+                {% else %}
+                    <a class="mdl-navigation__link" href="{% url 'account_login' %}">Sign In</a>
+                    <a class="mdl-navigation__link" href="{% url 'account_signup' %}">Sign Up</a>
+                {% endif %}
+            </nav>
+        </div>
+        {% if user.is_authenticated %}
+            <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+                <li class="mdl-menu__item mdl-js-ripple-effect">
+                    <a class="mdl-navigation__link" href="{% url 'account_email' %}"><i class="menu-icon material-icons left">email</i>Change E-mail</a>
+                </li>
+                <li class="mdl-menu__item mdl-js-ripple-effect">
+                    <a class="mdl-navigation__link" href="{% url 'account_logout' %}"><i class="menu-icon material-icons left">exit_to_app</i>Sign Out</a>
+                </li>
+            </ul>
+        {% endif %}
+        <!-- END Navigation -->
+
+    </div>
+
+</div>
+
+<!-- Drawer -->
+<div class="android-drawer mdl-layout__drawer">
+    <span class="mdl-layout-title">
+        <a href="{% url 'home' %}" class="brand-logo undecorate">Lieutenant</a>
+        <span class="version">({{ REVISION }})</span>
+    </span>
+    <nav class="mdl-navigation">
+        {% if user.is_authenticated %}
+            <a class="mdl-navigation__link" href="{% url 'tags:index' %}"><i class="menu-icon mdi mdi-tag-multiple left"></i>Tags</a>
+            <a class="mdl-navigation__link" href="{% url 'entries:favorites' %}"><i class="menu-icon mdi mdi-star left"></i>Favorites</a>
+            <div class="android-drawer-separator"></div>
+            <a class="mdl-navigation__link" href="{% url 'account_email' %}"><i class="menu-icon material-icons left">email</i>Change E-mail</a>
+            <a class="mdl-navigation__link" href="{% url 'account_logout' %}"><i class="menu-icon material-icons left">exit_to_app</i>Sign Out</a>
+        {% else %}
+            <a class="mdl-navigation__link" href="{% url 'account_login' %}">Sign In</a>
+            <a class="mdl-navigation__link" href="{% url 'account_signup' %}">Sign Up</a>
+        {% endif %}
+    </nav>
+</div>
+<!-- END Drawer -->
