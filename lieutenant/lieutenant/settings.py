@@ -138,3 +138,5 @@ STATIC_URL = '/static/'
 
 # Location where the collectstatic command will place static files
 STATIC_ROOT = '/home/lieutenant/static'
+
+LOGIN_REDIRECT_URL = '/'
