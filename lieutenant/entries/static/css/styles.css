@@ -81,6 +81,11 @@
 /* #endregion Modules */
 
 /* #region State */
+
+.collection-item--hover {
+    background-color: #eeeeee;
+}
+
 /* #endregion State */
 
 /* #region Theme */
