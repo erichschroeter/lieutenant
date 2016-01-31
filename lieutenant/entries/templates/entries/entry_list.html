@@ -4,49 +4,89 @@
 
 {% block content %}
 
-{% if object_list %}
+    {% if object_list %}
 
-<div class="collection">
+        <div class="collection">
 
-  {% for entry in object_list %}
+        {% for entry in object_list %}
 
-    <a href="{% url 'entries:detail' entry.slug %}" class="collection-item">
-      <div class="truncate">{{ entry.text }}</div>
-      <ul class="taglist">
-      {% for tag in entry.tags.all %}
-        <li class="tag primary-color white-text">{{ tag.name }}</li>
-      {% endfor %}
+            <a href="{% url 'entries:detail' entry.slug %}" class="collection-item">
+            <div class="entry-collection-item mdl-grid">
+
+                <div class="mdl-layout-spacer"></div>
+
+                {% if entry.text|length > 0 %}
+                    <div class="entry-text truncate mdl-cell mdl-cell--5-col mdl-cell--3-col-tablet mdl-cell--4-col-phone">
+                        {{ entry.text }}
+                    </div>
+                    <div class="entry-tags truncate mdl-cell mdl-cell--7-col mdl-cell--5-col-tablet mdl-cell--hide-phone">
+                        <ul class="taglist">
+                        {% for tag in entry.tags.all %}
+                            <li class="tag primary-color white-text">{{ tag.name }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <div class="entry-tags truncate mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                        <ul class="taglist">
+                        {% for tag in entry.tags.all %}
+                            <li class="tag primary-color white-text">{{ tag.name }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <div class="mdl-layout-spacer"></div>
+
+            </div>
+            </a>
+
+        {% endfor %}
+
+        </div>
+
+    {% else %}
+        <div class="mdl-grid">
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-cell center">No entries exist.</div>
+            <div class="mdl-layout-spacer"></div>
+        </div>
+    {% endif %}
+
+    {% if messages %}
+
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+          <li>{{message}}</li>
+        {% endfor %}
       </ul>
-    </a>
+    </div>
 
-  {% endfor %}
+    {% endif %}
 
-</div>
-
-{% else %}
-  <p>No entries are available.</p>
-{% endif %}
-
-
-{% if messages %}
-
-<div>
-  <strong>Messages:</strong>
-  <ul>
-    {% for message in messages %}
-      <li>{{message}}</li>
-    {% endfor %}
-  </ul>
-</div>
-
-{% endif %}
-
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-  <a class="btn-floating btn-large green darken-4" href="{% url 'entries:create' %}">
-    <i class="large material-icons">add</i>
-  </a>
-</div>
-
+    <!-- Floating Action Button -->
+    <div id="fab_ctn" class="mdl-button--fab_flinger-container">
+        <a href="{% url 'entries:create' %}">
+            <button id="fab_btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">add</i>
+            </button>
+        </a>
+    </div>
 
 {% endblock content %}
 
+{% block template_js %}
+
+{% load staticfiles %}
+<script src="{% static 'js/mdl-fab.js' %}"></script>
+
+<script>
+    $(".entry-collection-item").hover(
+        function(e) { $(this).addClass('collection-item--hover'); },
+        function(e) { $(this).removeClass('collection-item--hover'); }
+    );
+</script>
+
+{% endblock %}
