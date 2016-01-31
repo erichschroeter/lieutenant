@@ -140,3 +140,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/lieutenant/static'
 
 LOGIN_REDIRECT_URL = '/'
+
+# Don't ask user to confirm signing out, just do it
+ACCOUNT_LOGOUT_ON_GET = True
