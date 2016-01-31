@@ -43,7 +43,11 @@
 
         <div class="android-content mdl-layout__content">
             {% block body %}
+            {% block pre_content %}
+            {% endblock %}
             {% block content %}
+            {% endblock %}
+            {% block post_content %}
             {% endblock %}
             {% endblock %}
             {% block extra_body %}
