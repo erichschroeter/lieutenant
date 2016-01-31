@@ -10,6 +10,21 @@
 .secondary-text-color  { color: #727272; }
 .divider-color         { border-color: #B6B6B6; }
 
+/* #region Base */
+/* #endregion Base */
+
+/* #region Layout */
+/* #endregion Layout */
+
+/* #region Modules */
+/* #endregion Modules */
+
+/* #region State */
+/* #endregion State */
+
+/* #region Theme */
+/* #endregion Theme */
+
 /* #region Links */
 
 nav a:not(.tag) {
