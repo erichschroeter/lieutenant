@@ -2,47 +2,53 @@
 
 {% block head_title %}{% if is_update %}Update{% else %}Create{% endif %} Entry{% endblock head_title %}
 
-{% block head_before_css %}
-
-  {% load staticfiles %}
-  <link href="{% static 'css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
-
-{% endblock head_before_css %}
-
 {% block content %}
+
 <div class="container">
 
-  {% load widget_tweaks %}
+    {% load widget_tweaks %}
 
-  <form action="" method="post">{% csrf_token %}
-    {{ form.non_field_errors }}
-    <div class="fieldWrapper row">
-      <div class="input-field">
-        {{ form.text.errors }}
-        <label for="{{ form.text.id_for_label }}">Text</label>
-        {{ form.text|attr:"autofocus"|add_class:"materialize-textarea" }}
-      </div>
+    <div class="mdl-grid">
+        <div class="mdl-layout-spacer"></div>
+
+        <div class="mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <p>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label fill-width">
+                        <textarea class="mdl-textfield__input" type="text" rows="5" name="{{ form.text.name }}" id="{{ form.text.id_for_label }}"></textarea>
+                        <label class="mdl-textfield__label" for="{{ form.text.id_for_label }}">Enter your requirement</label>
+                        <span class="mdl-textfield__error">{{ form.text.errors }}</span>
+                    </div>
+                </p>
+
+                <p>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label fill-width">
+                        <input class="mdl-textfield__input" type="text" name="{{ form.tags.name }}" id="{{ form.tags.id_for_label }}">
+                        <label class="mdl-textfield__label" for="{{ form.tags.id_for_label }}">Comma-separated list of tags</label>
+                        <span class="mdl-textfield__error">{{ form.tags.errors }}</span>
+                    </div>
+                </p>
+
+                <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">{% if is_update %}Update{% else %}Create{% endif %}</button>
+            </form>
+
+        </div>
+
+        <div class="mdl-layout-spacer"></div>
     </div>
 
-    <div class="fieldWrapper row">
-      <div class="input-field">
-        {{ form.tags.errors }}
-        <label for="{{ form.tags.id_for_label }}">Tags</label>
-        {{ form.tags|attr:"placeholder:A comma-separated list of tags." }}
-      </div>
     </div>
-    <button class="waves-effect waves-light btn green darken-2 white-text" type="submit">{% if is_update %}Update{% else %}Create{% endif %}</button>
-  </form>
-
-  </div>
 </div>
 
-{% endblock content %}
+{% endblock %}
 
 {% block extra_body_after_js %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="{% static 'js/tag-it.js' %}" type="text/javascript" charset="utf-8"></script>
 
 <script>
 $(document).ready(function() {
