@@ -88,6 +88,10 @@
 
 /* #region State */
 
+.fill-width {
+    width: 100%;
+}
+
 .collection-item--hover {
     background-color: #eeeeee;
 }
