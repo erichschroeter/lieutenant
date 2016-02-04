@@ -107,6 +107,10 @@
 
 /* #region State */
 
+.undecorate {
+    text-decoration: none;
+}
+
 .fill-width {
     width: 100%;
 }
