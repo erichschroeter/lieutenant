@@ -31,7 +31,7 @@ class TagRead(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(TagRead, self).get_context_data(**kwargs)
-	count = len(TaggedEntry.objects.filter(tag=self.object.name))
+	count = len(TaggedEntry.objects.filter(tag__name=self.object.name))
 	context.update({ 'count': count })
 	return context
 
