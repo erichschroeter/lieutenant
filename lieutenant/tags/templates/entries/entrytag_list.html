@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="mdl-grid">
 
 {% if object_list %}
 
@@ -12,18 +12,24 @@
 
   {% for tag in object_list %}
 
-    <li class="collection-item">
-      <span class="title tag green">{{ tag.name }}</span> <b>x {{ tag.count }}</b>
-      <a href="{% url 'tags:update' tag.slug %}" class="secondary-content"><i class="material-icons">mode_edit</i></a>
-      <p>{{ tag.wiki }}</p>
-    </li>
+    <a href="{% url 'tags:detail' tag.name %}" class="undecorate hide-phone">
+    {% include 'entries/entrytag_card.html' %}
+    </a>
+
+    <a href="{% url 'tags:detail' tag.name %}" class="undecorate hide-tablet hide-desktop">
+    {% include 'entries/entrytag_list_item.html' %}
+    </a>
 
   {% endfor %}
 
 </ul>
 
 {% else %}
-  <p>No tags are available.</p>
+
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell center">No tags exist.</div>
+    <div class="mdl-layout-spacer"></div>
+
 {% endif %}
 
 </div>
