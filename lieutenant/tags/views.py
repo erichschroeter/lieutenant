@@ -20,9 +20,9 @@ class TagList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         # get all tags
         queryset = EntryTag.objects.all()
-	for tag in queryset:
-	    count = len(TaggedEntry.objects.filter(tag__name=tag.name))
-	    tag.count = count
+        for tag in queryset:
+            count = len(TaggedEntry.objects.filter(tag__name=tag.name))
+            tag.count = count
         return queryset
 
 class TagRead(LoginRequiredMixin, DetailView):
@@ -31,9 +31,9 @@ class TagRead(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(TagRead, self).get_context_data(**kwargs)
-	count = len(TaggedEntry.objects.filter(tag__name=self.object.name))
-	context.update({ 'count': count })
-	return context
+        count = len(TaggedEntry.objects.filter(tag__name=self.object.name))
+        context.update({ 'count': count })
+        return context
 
 class TagUpdate(LoginRequiredMixin, UpdateView):
     model = EntryTag
@@ -42,7 +42,7 @@ class TagUpdate(LoginRequiredMixin, UpdateView):
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-	context = self.get_context_data(object=self.object)
+        context = self.get_context_data(object=self.object)
         return super(TagUpdate, self).get(request, *args, **kwargs)
 
 class TagDelete(LoginRequiredMixin, DeleteView):
