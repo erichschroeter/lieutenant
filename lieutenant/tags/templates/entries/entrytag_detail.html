@@ -4,18 +4,40 @@
 
 {% block content %}
 
-<div class="container">
-  <p>{{ object.name }} <b>x {{ count }}</b></p>
-  <p>{{ object.wiki }}</p>
-</div>
+    <div class="mdl-grid">
 
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-  <a class="btn-floating btn-large green darken-4" href="{% url 'tags:update' object.slug %}">
-    <i class="large material-icons">mode_edit</i>
-  </a>
-  <ul>
-    <li><a class="btn-floating red" href="{% url 'tags:delete' object.slug %}"><i class="material-icons">delete</i></a></li>
-  </ul>
+        <div class="mdl-layout-spacer"></div>
+
+        <div class="mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <p>{{ object.name }} <b>x {{ count }}</b></p>
+            <p>{{ object.wiki }}</p>
+        </div>
+
+        <div class="mdl-layout-spacer"></div>
+    </div>
+
+<!-- Floating Action Button -->
+<div id="fab_ctn" class="mdl-button--fab_flinger-container">
+    <button id="fab_btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">menu_up</i>
+    </button>
+    <div class="mdl-button--fab_flinger-options">
+        <a href="{% url 'tags:update' object.slug %}">
+            <button id="fab_btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">mode_edit</i>
+            </button>
+        </a>
+        <a href="{% url 'tags:delete' object.slug %}">
+            <button id="fab_btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">delete</i>
+            </button>
+        </a>
+    </div>
 </div>
 
 {% endblock content %}
+
+{% block template_js %}
+    {% load staticfiles %}
+    <script src="{% static 'js/mdl-fab.js' %}"></script>
+{% endblock %}

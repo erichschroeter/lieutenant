@@ -9,17 +9,18 @@
 <head>
   {% load staticfiles %}
 
-  {% block head_before_css %}
-  {% endblock %}
+  {% block css %}
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}" />
   <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css' %}" media="all" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/material-1.1.1.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/android-styles.css' %}" />
   <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,300,100,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
 
-  {% block head_after_css %}
+  {% endblock %}
+
+  {% block template_css %}
   {% endblock %}
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -39,61 +40,52 @@
 
 <body>
 
-  <nav>
-    <div class="nav-wrapper primary-color">
-      <a href="{% url 'entries:index' %}" class="brand-logo white-text">Lieutenant</a>
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        {% if user.is_authenticated %}
-          <ul id="profile_dropdown" class="dropdown-content" style="width: 500px;">
-            <li>Version: {{ REVISION }}</li>
-            <li class="divider"></li>
-            <li>Signed in as<br/><b>{% user_display user %}</b></li>
-            <li class="divider"></li>
-            <li><a href="#!">Profile</a></li>
-            <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-            <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-          </ul>
-          <li><a href="{% url 'tags:index' %}"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
-          <li><a href="{% url 'entries:favorites' %}"><i class="mdi mdi-star left"></i>Favorites</a></li>
-          <li><a href="#"><i class="mdi mdi-trending-up left"></i>Trending</a></li>
-          <li><a href="#" data-activates="profile_dropdown" class="dropdown-button"><i class="material-icons left">account_circle</i><i class="material-icons left">arrow_drop_down</i></a></li>
-        {% else %}
-          <li><a href="{% url 'account_login' %}"><i class="material-icons left">group</i>Sign In</a></li>
-          <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
-      <ul class="side-nav" id="slide-out">
-        <li><a href="#">Version: {{ REVISION }}</a></li>
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'tags:index' %}"><i class="mdi mdi-tag-multiple left"></i>Tags</a></li>
-          <li><a href="{% url 'entries:favorites' %}"><i class="mdi mdi-star left"></i>Favorites</a></li>
-          <li><a href="#"><i class="mdi mdi-trending-up left"></i>Trending</a></li>
-          <li class="divider"></li>
-          <li><a href="{% url 'account_email' %}"><i class="material-icons left">email</i>Change E-mail</a></li>
-          <li><a href="{% url 'account_logout' %}"><i class="material-icons left">exit_to_app</i>Sign Out</a></li>
-        {% else %}
-          <li><a href="{% url 'account_login' %}">Sign In</a></li>
-          <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        {% block nav_content %}
+            {% include 'navigation.html' %}
+        {% endblock %}
+
+        {% block messages %}
+
+            {% if messages %}
+                <div class="messages-container">
+                    {% for message in messages %}
+                    <div class="mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+
+                        <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone message">
+                            <div>{{ message }}</div>
+                        </div>
+
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        {% endblock %}
+
+        <div class="android-content mdl-layout__content">
+            {% block body %}
+            {% block pre_content %}
+            {% endblock %}
+            {% block content %}
+            {% endblock %}
+            {% block post_content %}
+            {% endblock %}
+            {% endblock %}
+            {% block extra_body %}
+            {% endblock %}
+        </div>
     </div>
-  </nav>
 
-  {% block body %}
-  {% block content %}
-  {% endblock %}
-  {% endblock %}
-  {% block extra_body %}
-  {% endblock %}
-
+  {% block js %}
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="{% static 'js/materialize.min.js' %}"></script>
+  <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+  <script src="{% static 'js/material-1.1.1.min.js' %}"></script>
+  {% endblock %}
 
-  <script>$(document).ready(function(){ $(".button-collapse").sideNav(); })</script>
-
-  {% block extra_body_after_js %}
+  {% block template_js %}
   {% endblock %}
 
   </body>

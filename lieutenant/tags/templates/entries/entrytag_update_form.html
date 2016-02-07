@@ -1,14 +1,41 @@
 {% extends 'base_site.html' %}
 
-{% block head_title %}Create Entry{% endblock head_title %}
+{% block head_title %}{% if is_update %}Update{% else %}Create{% endif %} Tag{% endblock head_title %}
 
 {% block content %}
-<div class="container">
 
-<form action="" method="post">{% csrf_token %}
-	{{ form.as_p }}
-	<button class="waves-effect waves-light btn green darken-2 white-text" type="submit">Update</button>
-</form>
+<div class="mdl-grid">
+
+    <div class="mdl-layout-spacer"></div>
+
+    <div class="mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <p>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label fill-width">
+                    <input class="mdl-textfield__input" type="text" name="{{ form.name.name }}" id="{{ form.name.id_for_label }}" value="{{ form.name.value }}">
+                    <label class="mdl-textfield__label" for="{{ form.name.id_for_label }}">Tag</label>
+                    <span class="mdl-textfield__error">{{ form.name.errors }}</span>
+                </div>
+            </p>
+
+            <p>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label fill-width">
+                    <textarea class="mdl-textfield__input" type="text" rows="5" name="{{ form.wiki.name }}" id="{{ form.wiki.id_for_label }}">{{ form.wiki.value }}</textarea>
+                    <label class="mdl-textfield__label" for="{{ form.wiki.id_for_label }}">Enter a description for this tag</label>
+                    <span class="mdl-textfield__error">{{ form.wiki.errors }}</span>
+                </div>
+            </p>
+
+            <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">{% if is_update %}Update{% else %}Create{% endif %}</button>
+        </form>
+
+    </div>
+
+    <div class="mdl-layout-spacer"></div>
 
 </div>
 {% endblock content %}

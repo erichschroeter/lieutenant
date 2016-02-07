@@ -4,36 +4,65 @@
 
 {% block content %}
 
-<div class="container">
-  <p class="entry-text">{{ entry.text }}</p>
+<div class="mdl-grid">
 
-  <ul class="taglist">
-  {% for tag in entry.tags.all %}
-  <li><a class="tag primary-color white-text" href="">{{ tag.name }}</a></li>
-  {% endfor %}
-  </ul>
+    <div class="mdl-layout-spacer"></div>
 
-  <dl>
-    <dt>Created at:</dt>
-    <dd class="entry-created-at">{{ entry.created_at|date:"c" }}</dd>
-    <dt>Updated at:</dt>
-    <dd class="entry-updated-at">{{ entry.updated_at|date:"c" }}</dd>
-  </dl>
+    <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+
+        <p class="entry-text">{{ entry.text }}</p>
+
+        <ul class="taglist">
+        {% for tag in entry.tags.all %}
+            <li><a class="tag primary-color white-text" href="">{{ tag.name }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <dl>
+            <dt>Created at:</dt>
+            <dd class="entry-created-at">{{ entry.created_at|date:"c" }}</dd>
+            <dt>Updated at:</dt>
+            <dd class="entry-updated-at">{{ entry.updated_at|date:"c" }}</dd>
+        </dl>
+
+    </div>
+
+    <div class="mdl-layout-spacer"></div>
+
 </div>
 
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-  <a class="btn-floating btn-large green darken-4" href="{% url 'entries:update' entry.slug %}">
-    <i class="large material-icons">mode_edit</i>
-  </a>
-  <ul>
-    <li><a class="btn-floating red" href="{% url 'entries:delete' entry.slug %}"><i class="material-icons">delete</i></a></li>
-    <li><a class="btn-floating blue" href="{% url 'entries:clone' entry.slug %}"><i class="material-icons">content_copy</i></a></li>
-    <li><a class="btn-floating yellow" href="{% url 'entries:favorite' entry.slug %}"><i class="material-icons">grade</i></a></li>
-  </ul>
+<!-- Floating Action Button -->
+<div id="fab_ctn" class="mdl-button--fab_flinger-container">
+    <button id="fab_btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">menu_up</i>
+    </button>
+    <div class="mdl-button--fab_flinger-options">
+        <a href="{% url 'entries:update' entry.slug %}">
+            <button id="fab_btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">mode_edit</i>
+            </button>
+        </a>
+        <a href="{% url 'entries:delete' entry.slug %}">
+            <button id="fab_btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">delete</i>
+            </button>
+        </a>
+        <a href="{% url 'entries:clone' entry.slug %}">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">content_copy</i>
+            </button>
+        </a>
+        <a href="{% url 'entries:favorite' entry.slug %}">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">grade</i>
+            </button>
+        </a>
+    </div>
 </div>
 
 {% endblock content %}
 
-{% block extra_body_after_js %}
-  <script>$(document).ready(function(){ $(".fixed-action-btn").openFAB(); })</script>
+{% block template_js %}
+    {% load staticfiles %}
+    <script src="{% static 'js/mdl-fab.js' %}"></script>
 {% endblock %}

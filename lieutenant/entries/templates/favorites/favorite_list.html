@@ -4,33 +4,46 @@
 
 {% block content %}
 
-<div class="container">
+    <div class="mdl-grid">
 
-{% if object_list %}
+        <div class="mdl-layout-spacer"></div>
 
-<ul class="collection">
+        <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
 
-  {% for fav in object_list %}
+            {% if object_list %}
 
-    <li class="collection-item">
-      <div class="truncate">{{ fav.content_object.text }}</div>
-      <a href="{% url 'entries:favorite' fav.content_object.slug %}" class="secondary-content"><i class="material-icons">grade</i></a>
+                <ul class="mdl-list">
+                {% for fav in object_list %}
 
-      <ul class="taglist">
-      {% for tag in fav.content_object.tags.all %}
-        <li class="tag primary-color white-text">{{ tag.name }}</li>
-      {% endfor %}
-      </ul>
-    </li>
+                    <li class="mdl-list__item mdl-list__item--two-line">
+                        <a class="mdl-list__item-primary-content " href="{% url 'entries:detail' fav.content_object.slug %}">
+                        <span>
+                            <span class="truncate">{{ fav.content_object.text }}</span>
+                            <span class="mdl-list__item-sub-title">
+                                <ul class="taglist">
+                                {% for tag in fav.content_object.tags.all %}
+                                    <li class="tag primary-color white-text">{{ tag.name }}</li>
+                                {% endfor %}
+                                </ul>
+                            </span>
+                        </span>
+                        <span class="mdl-list__item-secondary-content">
+                            <a class="mdl-list__item-secondary-action" href="{% url 'entries:favorite' fav.content_object.slug %}"><i class="material-icons">grade</i></a>
+                        </span>
+                        </a>
+                    </li>
 
-  {% endfor %}
+                {% endfor %}
+                </ul>
 
-</ul>
+            {% else %}
+                <p>No favorites exist.</p>
+            {% endif %}
 
-{% else %}
-  <p>No favorites are available.</p>
-{% endif %}
+        </div>
 
-</div>
+        <div class="mdl-layout-spacer"></div>
+
+    </div>
 
 {% endblock content %}
