@@ -14,6 +14,20 @@
 /* #endregion Base */
 
 /* #region Layout */
+
+.messages-container {
+    background-color: #388E3C;
+}
+
+.message {
+    height: 35px;
+    z-index: 101;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden;
+    margin: 0;
+}
+
 /* #endregion Layout */
 
 /* #region Modules */
