@@ -53,19 +53,6 @@
         </div>
     {% endif %}
 
-    {% if messages %}
-
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-          <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    {% endif %}
-
     <!-- Floating Action Button -->
     <div id="fab_ctn" class="mdl-button--fab_flinger-container">
         <a href="{% url 'entries:create' %}">
