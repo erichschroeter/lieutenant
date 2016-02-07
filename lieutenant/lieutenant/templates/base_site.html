@@ -45,6 +45,26 @@
             {% include 'navigation.html' %}
         {% endblock %}
 
+        {% block messages %}
+
+            {% if messages %}
+                <div class="messages-container">
+                    {% for message in messages %}
+                    <div class="mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+
+                        <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone message">
+                            <div>{{ message }}</div>
+                        </div>
+
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        {% endblock %}
+
         <div class="android-content mdl-layout__content">
             {% block body %}
             {% block pre_content %}
