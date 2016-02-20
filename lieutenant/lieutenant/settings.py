@@ -22,26 +22,10 @@ SECRET_KEY = 'he&$oe$(3va(8la@_!8*3&b)t(3ry0k2bo*7$&$%p&qy&4fr#8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
-from django.conf import global_settings
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-    # Required by `allauth` template tags
-    'django.core.context_processors.request',
-
-    # `allauth` specific context processors
-    'allauth.account.context_processors.account',
-    'dealer.contrib.django.context_processor',
-)
-
-TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'templates'),
-)
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -90,6 +74,25 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.headers.HeadersPanel',
     'debug_toolbar.panels.request.RequestPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            # Main site templates are stored in lieutenant project dir
+            os.path.join(os.path.dirname(__file__), 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'dealer.contrib.django.context_processor',
+            ],
+        },
+    },
 ]
 
 SITE_ID = 1
