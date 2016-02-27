@@ -39,6 +39,9 @@
                 <i class="material-icons">more_vert</i>
             </button>
             <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+                <li id="id_logged_in_as" class="mdl-menu__item mdl-js-ripple-effect">
+                    Logged in as: {{ user.username }}
+                </li>
                 <li class="mdl-menu__item mdl-js-ripple-effect">
                     <a class="mdl-navigation__link" href="{% url 'account_email' %}"><i class="menu-icon material-icons left">email</i>Change E-mail</a>
                 </li>
@@ -58,6 +61,11 @@
     <span class="mdl-layout-title">
         <a href="{% url 'home' %}" class="brand-logo undecorate">Lieutenant</a>
         <span class="version">({{ REVISION }})</span>
+        {% if user.is_authenticated %}
+           <p id="id_logged_in_as">
+               Logged in as:<br />{{ user.username }}
+           </p>
+        {% endif %}
     </span>
     <nav class="mdl-navigation">
         {% if user.is_authenticated %}
