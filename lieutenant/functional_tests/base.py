@@ -50,10 +50,11 @@ class FunctionalTest(StaticLiveServerTestCase):
             )
         )
 
-    def wait_to_be_logged_in(self, username):
+    def wait_to_be_logged_in(self):
+        self.wait_for_element_with_id('more-button')
+        # Click the more button to make the Sign Out button visible
+        self.browser.find_element_by_id('more-button').click()
         self.wait_for_element_with_id('id_logout')
-        elem = self.browser.find_element_by_id('id_logged_in_as')
-        self.assertIn(username, elem.text)
 
     def wait_to_be_logged_out(self, email):
         self.wait_for_element_with_id('id_login')
